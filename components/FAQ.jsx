@@ -35,7 +35,7 @@ function FAQ() {
     ],
     [
       "¿Quién organiza?",
-      "Fundación NEAR YOU. CIF G21897772. Reg. Fundaciones nº 3043. Auditada anualmente. wenearyou.org.",
+      <>Fundación <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer">NEAR YOU</a>. CIF G21897772. Reg. Fundaciones nº 3043. Auditada anualmente. wenearyou.org.</>,
     ],
   ];
 

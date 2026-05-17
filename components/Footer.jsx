@@ -19,7 +19,7 @@ function Footer() {
         }}>
           <div>
             <div className="eyebrow" style={{ marginBottom: 16 }}>
-              NEAR YOU · 2026
+              <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer">NEAR YOU</a> · 2026
             </div>
             <div style={{
               fontFamily: "var(--font-display)",
@@ -30,7 +30,7 @@ function Footer() {
               color: "var(--ny-bone)",
             }}>
               Apúntate y<br />
-              marca la <span style={{ color: "var(--ny-gold)" }}>diferencia.</span>
+              <span style={{ color: "var(--ny-gold)" }}>marca</span> la <span style={{ color: "var(--ny-gold)" }}>diferencia.</span>
             </div>
             <a
               href="https://wa.me/34644893571"
@@ -52,7 +52,7 @@ function Footer() {
           ]} />
 
           <FooterCol title="Fundación" lines={[
-            "NEAR YOU",
+            <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer">NEAR YOU</a>,
             "Solidaridad sin fronteras",
             "CIF G21897772",
             "Reg. Fundaciones nº 3043",

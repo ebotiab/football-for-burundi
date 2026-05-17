@@ -230,7 +230,7 @@ function Premio() {
               lineHeight: 1,
               marginBottom: 16,
               zIndex: 1, position: "relative",
-            }}>Sorpresa para el que más marca.</h3>
+            }}>Sorpresa para el que más <span style={{ color: "var(--ny-gold)" }}>marca</span>.</h3>
             <p style={{
               fontSize: 15, lineHeight: 1.55,
               color: "rgba(244,239,227,0.78)",
@@ -267,7 +267,7 @@ function Premio() {
               lineHeight: 1,
               marginBottom: 16,
               zIndex: 1, position: "relative",
-            }}>Sorpresa para quien marca la diferencia.</h3>
+            }}>Sorpresa para quien <span style={{ color: "var(--ny-gold)" }}>marca</span> la diferencia.</h3>
             <p style={{
               fontSize: 15, lineHeight: 1.55,
               color: "rgba(244,239,227,0.78)",

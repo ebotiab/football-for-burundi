@@ -113,25 +113,25 @@ function Hero() {
           </h1>
 
           <div style={subtitleWrap}>
-            <span className="brush" style={{ fontSize: "clamp(34px, 4.4vw, 56px)" }}>
+            <a href="#inscripcion" className="brush" style={{ fontSize: "clamp(34px, 4.4vw, 56px)" }}>
               apúntate
-            </span>
+            </a>
             <span style={{
               ...subSmall,
               fontSize: "clamp(14px, 1.4vw, 18px)",
               letterSpacing: "0.18em",
               color: "rgba(244,239,227,0.85)",
-            }}>y marca la diferencia</span>
+            }}>y <span style={{ color: "var(--ny-gold)" }}>marca</span> la diferencia</span>
           </div>
 
           <p style={leadStyle}>
-            De la mano de NEAR YOU, fútbol 7v7 en Madrid para mandar
+            De la mano de <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer">NEAR YOU</a>, fútbol 7v7 en Madrid para mandar
             material sanitario y reabrir clínicas rurales en Burundi.
             Apúntate ese finde porque… se vienen cositas.
           </p>
 
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-            <a href="#inscripcion" className="btn-primary">
+            <a href="#inscripcion" className="btn-primary" style={{ fontSize: 18, padding: "20px 36px" }}>
               Inscribe tu equipo
               <span aria-hidden="true">→</span>
             </a>

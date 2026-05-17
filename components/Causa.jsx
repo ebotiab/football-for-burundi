@@ -3,7 +3,7 @@ function Causa() {
   const pillars = [
     ["Directo", "Sin intermediarios. El dinero va de tu equipo a Burundi en cuestión de días, no años."],
     ["Tangible", "Una obra concreta sobre el terreno, no campañas abstractas. Ves dónde va tu inscripción."],
-    ["Solidaridad sin fronteras", "Es el lema de NEAR YOU. No es un eslogan: es el método."],
+    ["Solidaridad sin fronteras", <>Es el lema de <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer">NEAR YOU</a>. No es un eslogan: es el método.</>],
   ];
 
   const slogan = {
@@ -32,7 +32,7 @@ function Causa() {
               disfrazado de <span style={{ color: "var(--ny-gold)" }}>fútbol.</span>
             </h2>
             <p className="lead">
-              NEAR YOU es una fundación sin ánimo de lucro (Reg. Fundaciones nº 3043)
+              <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer">NEAR YOU</a> es una fundación sin ánimo de lucro (Reg. Fundaciones nº 3043)
               que actúa donde más se necesita: Ucrania, Burundi, Venezuela, Colombia.
               Lo recaudado este año se destina íntegramente a Burundi:
               adquisición de material sanitario y reconstrucción de clínicas
