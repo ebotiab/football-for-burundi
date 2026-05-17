@@ -1,0 +1,97 @@
+/* global React */
+function Header() {
+  const navItems = [
+    ["La causa", "#causa"],
+    ["Cómo va", "#como"],
+    ["Ambiente", "#ambiente"],
+    ["FAQ", "#faq"],
+  ];
+
+  const wrap = {
+    position: "fixed",
+    top: 0, left: 0, right: 0,
+    zIndex: 50,
+    backdropFilter: "saturate(140%) blur(0)",
+    background: "linear-gradient(to bottom, rgba(11,21,37,0.92), rgba(11,21,37,0.6) 70%, transparent)",
+    padding: "20px 0 28px",
+  };
+
+  const row = {
+    display: "flex", alignItems: "center", justifyContent: "space-between",
+    gap: 24,
+  };
+
+  // Wordmark recreated in type (matches the brand book) so it sits cleanly on navy.
+  const wordmark = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 4,
+    fontFamily: "var(--font-script)",
+    fontWeight: 400,
+    fontSize: 32,
+    lineHeight: 1,
+    color: "var(--ny-bone)",
+    letterSpacing: "0.02em",
+    whiteSpace: "nowrap",
+  };
+
+  const nav = {
+    display: "flex", gap: 26, alignItems: "center", flexWrap: "nowrap",
+    fontFamily: "var(--font-mono)", fontSize: 11,
+    letterSpacing: "0.22em", textTransform: "uppercase",
+    color: "rgba(244,239,227,0.78)",
+  };
+
+  return (
+    <header style={wrap}>
+      <div className="wrap" style={row}>
+        <a href="#top" style={wordmark} aria-label="NEAR YOU">
+          <span>NEAR&nbsp;Y</span>
+          <img
+            src="assets/dove-seal-transparent.png"
+            alt=""
+            aria-hidden="true"
+            style={{
+              width: 34, height: 34,
+              objectFit: "contain",
+              marginLeft: 2, marginRight: 2,
+              flex: "0 0 auto",
+              transform: "translateY(-2px)",
+            }}
+          />
+          <span>U</span>
+        </a>
+
+        <nav style={nav} className="hdr-nav">
+          {navItems.map(([label, href]) => (
+            <a key={href} href={href} className="hdr-link" style={{ whiteSpace: "nowrap" }}>{label}</a>
+          ))}
+        </nav>
+
+        <a href="#inscripcion" className="btn-compact">
+          Inscribir equipo
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <style>{`
+        .hdr-link {
+          position: relative;
+          padding: 6px 0;
+          transition: color var(--t-fast) var(--ease-out);
+        }
+        .hdr-link:hover { color: var(--ny-bone); }
+        .hdr-link::after {
+          content: ""; position: absolute; left: 0; right: 100%;
+          bottom: 0; height: 1px; background: var(--ny-gold);
+          transition: right var(--t-fast) var(--ease-out);
+        }
+        .hdr-link:hover::after { right: 0; }
+        @media (max-width: 820px) {
+          .hdr-nav { display: none; }
+        }
+      `}</style>
+    </header>
+  );
+}
+
+window.Header = Header;
