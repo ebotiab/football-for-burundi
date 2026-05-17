@@ -1,8 +1,8 @@
-/* global React, Header, Hero, TagsBar, Causa, StatsBar, HowItWorks, Ambiente, Inscription, FAQ, Footer */
+/* global React, Header, Hero, TagsBar, Causa, StatsBar, HowItWorks, Ambiente, Premio, Inscription, FAQ, Footer */
 
 const TOURNAMENT_DEFAULTS = {
   formato: "Fútbol 7",
-  precio: 55,
+  precio: 60,
   sede: "Por confirmar",
   avatarSize: 460,
   showTagsBar: true,
@@ -20,6 +20,7 @@ function App() {
       <StatsBar />
       <HowItWorks />
       <Ambiente />
+      <Premio />
       <Inscription />
       <FAQ />
       <Footer />

@@ -23,7 +23,7 @@ function Inscription() {
     <section id="inscripcion" style={{ background: "var(--ny-navy-700)" }}>
       <div className="wrap">
         <div className="sec-header">
-          <div className="eyebrow">04 · Inscríbete</div>
+          <div className="eyebrow">05 · Inscríbete</div>
           <h2>
             Dos minutos.<br />
             <span style={{ color: "var(--ny-gold)" }}>Y al campo.</span>
@@ -110,10 +110,14 @@ function Inscription() {
                 color: "var(--fg-subtle)",
                 maxWidth: 360, lineHeight: 1.6,
               }}>
-                {precio ? `${precio}€` : "Precio orientativo 55€"}/equipo · pago el
+                {precio ? `${precio}€` : "Precio orientativo 60€"}/equipo · pago el
                 día del torneo (efectivo o Bizum).
                 <br />
                 Formato: {fmt}.
+                <br />
+                <span style={{ color: "var(--ny-gold)" }}>Premio campeón</span>{" "}
+                · Camisetas de España + caja de vinos. Pichichi y MVP,
+                premio sorpresa.
               </div>
             </div>
           </form>

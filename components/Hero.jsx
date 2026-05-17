@@ -104,7 +104,7 @@ function Hero() {
         {/* LEFT — copy */}
         <div>
           <div className="eyebrow">
-            Torneo Benéfico · Madrid · 27.06.2026
+            Torneo Benéfico · Madrid · 27.06.2026 · 10:00
           </div>
 
           <h1 style={titleStyle}>
@@ -116,14 +116,18 @@ function Hero() {
             <span className="brush" style={{ fontSize: "clamp(34px, 4.4vw, 56px)" }}>
               apúntate
             </span>
-            <span style={subSmall}>y marca la diferencia</span>
+            <span style={{
+              ...subSmall,
+              fontSize: "clamp(14px, 1.4vw, 18px)",
+              letterSpacing: "0.18em",
+              color: "rgba(244,239,227,0.85)",
+            }}>y marca la diferencia</span>
           </div>
 
           <p style={leadStyle}>
             Una mañana de sábado, un campo de Madrid, una causa concreta
-            en Burundi. Un granero, una obra, lo que haga falta — el
-            proyecto exacto se confirma antes del torneo. El destino y
-            el método no cambian.
+            en Burundi: material sanitario y reconstrucción de clínicas
+            rurales. Fútbol que cambia vidas.
           </p>
 
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
@@ -134,10 +138,35 @@ function Hero() {
             <a href="#causa" className="btn-secondary">Saber más</a>
           </div>
 
+          <a href="#premio" className="hero-prize" style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 10,
+            marginTop: 18,
+            fontFamily: "var(--font-mono)",
+            fontSize: 11,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "rgba(244,239,227,0.6)",
+            transition: "color var(--t-fast) var(--ease-out)",
+          }}>
+            <span style={{ color: "var(--ny-gold)" }}>+ Premio</span>
+            <span style={{ opacity: 0.5 }}>·</span>
+            <span>Equipación de España + caja de vinos para el campeón</span>
+          </a>
+
           <div className="hero-meta" style={metaWrap}>
             <div style={metaCell}>
               Cuándo
               <strong style={metaStrong}>27.06.26</strong>
+              <span style={{
+                display: "block",
+                marginTop: 4,
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                letterSpacing: "0.22em",
+                color: "rgba(244,239,227,0.6)",
+              }}>10:00 H</span>
             </div>
             <div style={metaCell}>
               Dónde

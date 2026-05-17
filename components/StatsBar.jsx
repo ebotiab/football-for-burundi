@@ -3,7 +3,7 @@ function StatsBar() {
   const precio = TOURNAMENT.precio;
   const stats = [
     [precio ? `${precio}€` : "TBD", "por equipo. Pendiente de confirmar el formato definitivo y la sede.", precio ? null : "POR CONFIRMAR"],
-    ["100%", "de la recaudación va a un proyecto en Burundi. El destino concreto se confirma antes del torneo.", null],
+    ["100%", "de la recaudación va a Burundi: material sanitario y reconstrucción de clínicas en zonas rurales.", null],
     ["+16", "edad mínima. Equipos mixtos o cerrados — como prefiráis.", null],
   ];
 
@@ -53,7 +53,7 @@ function StatsBar() {
             position: "absolute", top: -10, left: -10,
             width: 20, height: 20, background: "var(--ny-navy-900)",
           }} />
-          {precio || 55}€ = tres rondas de cerveza. O agua corriente para una clínica entera.
+          {precio || 60}€ = tres rondas de cerveza. O agua corriente para una clínica entera.
         </div>
       </div>
 

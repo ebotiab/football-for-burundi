@@ -3,7 +3,7 @@ function HowItWorks() {
   const steps = [
     ["01", "Reúne a tu equipo", "Mayores de 16. Equipos mixtos o cerrados, como queráis. Si te falta gente, escríbenos y emparejamos. Nadie se queda fuera por número."],
     ["02", "Escribe por WhatsApp", "+34 644 89 35 71. Una línea basta: nombre del capitán + nombre del equipo. Te confirmamos en 24h."],
-    ["03", "Sábado 27, juegas", "Te enviamos la sede y la hora de tu primer partido. Llega, juega, quédate al concierto y a comer."],
+    ["03", "Sábado 27, 10:00", "Arrancamos a las diez. Te enviamos la sede y la hora de tu primer partido por WhatsApp. Llega, juega, quédate a comer y a tomar algo."],
   ];
 
   return (

@@ -26,8 +26,12 @@ function FAQ() {
       "Partidos arbitrados, camiseta del torneo, agua y un café de bienvenida. Música, comida y bebida en barra se pagan aparte, en el propio sitio.",
     ],
     [
+      "¿Hay premios?",
+      "Sí. El equipo campeón se lleva camisetas oficiales de Adidas con las que España juega el Mundial 2026 y una caja de vinos para el vestuario. Además hay dos premios individuales sorpresa: uno para el pichichi y otro para el MVP del torneo.",
+    ],
+    [
       "¿Cómo se paga?",
-      "Efectivo o Bizum el mismo día del torneo, en mesa de inscripciones. No hay portal de donaciones — el 100% de tu inscripción va al proyecto de Burundi de esta edición.",
+      "Efectivo o Bizum el mismo día del torneo, en mesa de inscripciones. No hay portal de donaciones — el 100% de tu inscripción va a material sanitario y reconstrucción de clínicas rurales en Burundi.",
     ],
     [
       "¿Quién organiza?",
@@ -41,7 +45,7 @@ function FAQ() {
     <section id="faq">
       <div className="wrap">
         <div className="sec-header">
-          <div className="eyebrow">05 · Dudas sin fricción</div>
+          <div className="eyebrow">06 · Dudas sin fricción</div>
           <h2>
             Lo que la gente<br />
             pregunta siempre.

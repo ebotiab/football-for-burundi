@@ -28,6 +28,7 @@ function TagsBar() {
         gap: 16, flexWrap: "wrap",
       }}>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <span className="tag">PREMIO · CAMISETAS DE ESPAÑA</span>
           <span className="tag">SÁBADO 27.06</span>
           <span className="tag muted">POR LA MAÑANA</span>
           <span className="tag muted">MADRID</span>
