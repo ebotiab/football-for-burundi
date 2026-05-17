@@ -119,7 +119,7 @@ function Inscription() {
           </form>
         )}
 
-        <div style={{
+        <div className="ins-whatsapp" style={{
           marginTop: 64,
           padding: "26px 30px",
           background: "var(--ny-navy-900)",
@@ -133,7 +133,7 @@ function Inscription() {
             </div>
             <div style={{
               fontFamily: "var(--font-display)", fontWeight: 800,
-              fontSize: 28, color: "var(--ny-bone)", letterSpacing: "0.02em",
+              fontSize: "clamp(22px, 6vw, 28px)", color: "var(--ny-bone)", letterSpacing: "0.02em",
             }}>
               644 · 89 · 35 · 71
             </div>
@@ -152,6 +152,16 @@ function Inscription() {
       <style>{`
         @media (max-width: 720px) {
           #inscripcion form { grid-template-columns: 1fr !important; gap: 28px !important; }
+        }
+        @media (max-width: 600px) {
+          #inscripcion .ins-whatsapp {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 22px 22px;
+            margin-top: 48px;
+          }
+          #inscripcion .ins-whatsapp .btn-primary { width: 100%; justify-content: center; }
         }
       `}</style>
     </section>

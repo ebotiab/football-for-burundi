@@ -57,8 +57,8 @@ function FAQ() {
                   onClick={() => setOpen(isOpen ? -1 : i)}
                   style={{
                     width: "100%", textAlign: "left",
-                    padding: "26px 0",
-                    display: "flex", alignItems: "baseline", gap: 24,
+                    padding: "clamp(18px, 3vw, 26px) 0",
+                    display: "flex", alignItems: "baseline", gap: 16,
                     fontFamily: "var(--font-display)", fontWeight: 800,
                     fontSize: "clamp(18px, 2vw, 24px)", letterSpacing: "0.01em",
                     textTransform: "uppercase", lineHeight: 1.1,

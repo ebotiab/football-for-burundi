@@ -43,7 +43,8 @@ function TagsBar() {
           <span style={{ color: "var(--ny-gold)" }}>Faltan</span>
           <strong style={{
             color: "var(--ny-bone)", fontFamily: "var(--font-display)",
-            fontWeight: 800, fontSize: 20, letterSpacing: "0.04em",
+            fontWeight: 800, fontSize: "clamp(16px, 3.6vw, 20px)", letterSpacing: "0.04em",
+            whiteSpace: "nowrap",
           }}>
             {d}d : {pad2(h)}h : {pad2(m)}m : {pad2(s)}s
           </strong>

@@ -6,7 +6,7 @@ function Footer() {
 
   return (
     <footer style={{
-      padding: "96px 0 60px",
+      padding: "clamp(60px, 10vw, 96px) 0 clamp(40px, 6vw, 60px)",
       borderTop: "1px solid var(--line)",
       background: "var(--ny-navy-900)",
     }}>
@@ -74,7 +74,14 @@ function Footer() {
       </div>
 
       <style>{`
-        @media (max-width: 880px) {
+        @media (max-width: 1024px) {
+          footer .wrap > div:first-child {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 40px !important;
+          }
+          footer .wrap > div:first-child > div:first-child { grid-column: 1 / -1; }
+        }
+        @media (max-width: 720px) {
           footer .wrap > div:first-child { grid-template-columns: 1fr !important; gap: 36px !important; }
         }
       `}</style>

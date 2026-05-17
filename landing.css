@@ -37,8 +37,8 @@ h1, h2, h3, h4 {
   line-height: 0.92;
   text-transform: uppercase;
 }
-h1 { font-size: clamp(56px, 9vw, 148px); }
-h2 { font-size: clamp(44px, 6.4vw, 96px); }
+h1 { font-size: clamp(44px, 10vw, 148px); }
+h2 { font-size: clamp(36px, 7vw, 96px); }
 h3 { font-size: clamp(28px, 3.6vw, 52px); }
 h4 { font-size: 22px; letter-spacing: 0.02em; }
 
@@ -69,9 +69,17 @@ section { padding: 120px 0; position: relative; }
 section.cream { background: var(--ny-bone); color: var(--ny-navy-800); }
 section.cream .lead { color: var(--ny-navy-700); opacity: 1; }
 
+@media (max-width: 1024px) {
+  section { padding: 96px 0; }
+  .wrap { padding: 0 28px; }
+}
 @media (max-width: 880px) {
   section { padding: 72px 0; }
   .wrap { padding: 0 22px; }
+}
+@media (max-width: 480px) {
+  section { padding: 56px 0; }
+  .wrap { padding: 0 18px; }
 }
 
 /* ===== Brushstroke highlight ===== */
@@ -103,6 +111,7 @@ section.cream .lead { color: var(--ny-navy-700); opacity: 1; }
   font-family: var(--font-display); font-weight: 800;
   font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase;
   padding: 16px 30px;
+  min-height: 44px;
   white-space: nowrap;
   transition:
     transform var(--t-fast) var(--ease-out),
@@ -122,6 +131,7 @@ section.cream .lead { color: var(--ny-navy-700); opacity: 1; }
   font-family: var(--font-display); font-weight: 800;
   font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase;
   padding: 14px 28px;
+  min-height: 44px;
   white-space: nowrap;
   border: 2px solid var(--ny-bone);
   transition: background var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
@@ -137,6 +147,7 @@ section.cream .btn-secondary:hover { background: var(--ny-navy-900); color: var(
   font-family: var(--font-display); font-weight: 800;
   font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
   padding: 11px 18px;
+  min-height: 44px;
   white-space: nowrap;
   transition:
     transform var(--t-fast) var(--ease-out),
@@ -187,6 +198,10 @@ section.cream .btn-secondary:hover { background: var(--ny-navy-900); color: var(
 /* ===== Shared section header block ===== */
 .sec-header { margin-bottom: 56px; max-width: 880px; }
 .sec-header h2 { margin-bottom: 22px; }
+@media (max-width: 880px) {
+  .sec-header { margin-bottom: 40px; }
+  .sec-header h2 { margin-bottom: 16px; }
+}
 
 /* ===== Cards ===== */
 .card {

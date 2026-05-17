@@ -3,8 +3,8 @@ function Hero() {
   const wrap = {
     position: "relative",
     minHeight: "100vh",
-    paddingTop: 140,
-    paddingBottom: 80,
+    paddingTop: "clamp(96px, 14vw, 140px)",
+    paddingBottom: "clamp(48px, 8vw, 80px)",
     overflow: "hidden",
     background: `
       radial-gradient(ellipse at 88% 8%, rgba(245,197,24,0.10), transparent 55%),
@@ -95,7 +95,7 @@ function Hero() {
   return (
     <section id="top" style={wrap}>
       {/* Decorative giant N·Y in the corner */}
-      <div className="bignum" style={{
+      <div className="bignum hero-bignum" style={{
         bottom: -40, right: -50,
         fontSize: "clamp(220px, 28vw, 460px)",
       }}>N·Y</div>
@@ -134,7 +134,7 @@ function Hero() {
             <a href="#causa" className="btn-secondary">Saber más</a>
           </div>
 
-          <div style={metaWrap}>
+          <div className="hero-meta" style={metaWrap}>
             <div style={metaCell}>
               Cuándo
               <strong style={metaStrong}>27.06.26</strong>
@@ -170,18 +170,20 @@ function Hero() {
             bottom: "14%",
             left: "50%",
             transform: "translateX(-50%)",
-            width: 200, height: 28,
+            width: "min(60%, 220px)", height: 28,
             background: "radial-gradient(ellipse at center, rgba(245,197,24,0.32), transparent 70%)",
             filter: "blur(2px)",
             pointerEvents: "none",
             zIndex: 0,
           }} />
-          <KidAvatar size={(window.TOURNAMENT && window.TOURNAMENT.avatarSize) || 460} />
+          <div style={{ width: "100%", maxWidth: "min(72vw, 460px)" }}>
+            <KidAvatar size={(window.TOURNAMENT && window.TOURNAMENT.avatarSize) || 460} />
+          </div>
         </div>
       </div>
 
       {/* Scroll affordance */}
-      <a href="#tags" aria-label="Bajar" style={{
+      <a href="#tags" aria-label="Bajar" className="hero-scroll" style={{
         position: "absolute", bottom: 20, left: "50%",
         transform: "translateX(-50%)",
         fontFamily: "var(--font-mono)", fontSize: 10,
@@ -195,9 +197,16 @@ function Hero() {
 
       <style>{`
         @media (max-width: 880px) {
-          #top { padding-top: 110px; padding-bottom: 60px; }
+          #top { min-height: auto; padding-top: clamp(96px, 18vw, 120px); padding-bottom: 60px; }
           #top .wrap { grid-template-columns: 1fr; gap: 24px; }
-          #top .wrap > div:last-child { min-height: 280px; }
+          #top .wrap > div:last-child { min-height: 0; }
+          #top .hero-bignum { font-size: clamp(160px, 38vw, 280px); bottom: -30px; right: -30px; }
+          #top .hero-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 24px; }
+          #top .hero-scroll { display: none; }
+        }
+        @media (max-width: 480px) {
+          #top .hero-bignum { display: none; }
+          #top .hero-meta { gap: 14px 18px; }
         }
       `}</style>
     </section>

@@ -84,8 +84,12 @@ function Causa() {
       </div>
 
       <style>{`
+        @media (max-width: 1024px) {
+          #causa .wrap > div:last-child { gap: 40px !important; }
+        }
         @media (max-width: 880px) {
           #causa .wrap > div:last-child { grid-template-columns: 1fr !important; gap: 32px !important; }
+          #causa .bignum { font-size: clamp(140px, 30vw, 220px) !important; top: -30px !important; left: -20px !important; }
         }
       `}</style>
     </section>

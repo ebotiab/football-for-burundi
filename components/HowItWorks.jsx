@@ -59,8 +59,17 @@ function HowItWorks() {
       </div>
 
       <style>{`
-        @media (max-width: 880px) {
+        @media (max-width: 1024px) {
+          #como .wrap > div:last-child {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 22px !important;
+          }
+          #como .wrap > div:last-child > div:nth-child(3) { grid-column: 1 / -1; }
+        }
+        @media (max-width: 720px) {
           #como .wrap > div:last-child { grid-template-columns: 1fr !important; }
+          #como .wrap > div:last-child > div:nth-child(3) { grid-column: auto; }
+          #como .bignum { font-size: clamp(140px, 30vw, 220px) !important; top: 20px !important; right: -20px !important; }
         }
       `}</style>
     </section>

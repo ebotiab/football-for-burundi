@@ -122,8 +122,17 @@ function Ambiente() {
       </div>
 
       <style>{`
-        @media (max-width: 880px) {
+        @media (max-width: 1024px) {
+          #ambiente .wrap > div:nth-of-type(2) {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          #ambiente .wrap > div:nth-of-type(2) > article:nth-child(3) { grid-column: 1 / -1; }
+        }
+        @media (max-width: 720px) {
           #ambiente .wrap > div:nth-of-type(2) { grid-template-columns: 1fr !important; }
+          #ambiente .wrap > div:nth-of-type(2) > article { min-height: 0 !important; padding: 26px !important; }
+          #ambiente .wrap > div:nth-of-type(2) > article:nth-child(3) { grid-column: auto; }
+          #ambiente .bignum { font-size: clamp(140px, 30vw, 220px) !important; right: -20px !important; }
         }
       `}</style>
     </section>

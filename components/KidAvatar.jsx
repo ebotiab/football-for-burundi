@@ -21,16 +21,14 @@ function KidAvatar({ size = 420 }) {
     return () => v.removeEventListener("canplay", tryPlay);
   }, []);
 
-  const w = size;
-  const h = Math.round((size * 9) / 16);
-
   return (
     <div
       style={{
         position: "relative",
-        width: w,
-        height: h,
-        display: "inline-block",
+        width: "100%",
+        maxWidth: size,
+        aspectRatio: "16 / 9",
+        display: "block",
         filter: "drop-shadow(0 18px 24px rgba(0,0,0,0.55))",
       }}
     >

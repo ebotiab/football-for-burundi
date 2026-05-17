@@ -36,9 +36,9 @@ function StatsBar() {
           ))}
         </div>
 
-        <div style={{
+        <div className="stats-goldbox" style={{
           marginTop: 56,
-          padding: "26px 34px",
+          padding: "clamp(20px, 4vw, 26px) clamp(20px, 5vw, 34px)",
           background: "var(--ny-gold)",
           color: "var(--ny-navy-900)",
           fontFamily: "var(--font-display)",
@@ -58,8 +58,12 @@ function StatsBar() {
       </div>
 
       <style>{`
+        @media (max-width: 1024px) {
+          section .wrap > div:first-child { gap: 24px !important; }
+        }
         @media (max-width: 720px) {
           section .wrap > div:first-child { grid-template-columns: 1fr !important; }
+          .stats-goldbox { margin-top: 40px !important; }
         }
       `}</style>
     </section>
