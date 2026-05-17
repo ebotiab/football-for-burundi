@@ -69,8 +69,11 @@ function KidAvatar({ size = 420 }) {
     maxWidth: size,
     aspectRatio: "16 / 9",
     display: "block",
-    filter: "drop-shadow(0 18px 24px rgba(0,0,0,0.55))",
   };
+  // drop-shadow only on the still <img> fallback. Applying CSS filters to
+  // <video> with alpha forces per-frame recomposition through the shadow,
+  // which Safari can't keep up with on transparent HEVC and falls back to
+  // software compositing → visible stutter even though decode is fine.
   const media = {
     width: "100%",
     height: "100%",
@@ -78,6 +81,10 @@ function KidAvatar({ size = 420 }) {
     display: "block",
     pointerEvents: "none",
     background: "transparent",
+  };
+  const mediaWithShadow = {
+    ...media,
+    filter: "drop-shadow(0 18px 24px rgba(0,0,0,0.55))",
   };
 
   if (fallback) {
@@ -88,7 +95,7 @@ function KidAvatar({ size = 420 }) {
           alt=""
           aria-hidden="true"
           decoding="async"
-          style={media}
+          style={mediaWithShadow}
         />
       </div>
     );
