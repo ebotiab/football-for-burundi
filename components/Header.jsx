@@ -24,7 +24,6 @@ function Header() {
     position: "fixed",
     top: 0, left: 0, right: 0,
     zIndex: 50,
-    backdropFilter: "saturate(140%) blur(0)",
     background: "linear-gradient(to bottom, rgba(11,21,37,0.92), rgba(11,21,37,0.6) 70%, transparent)",
     padding: "20px 0 28px",
   };
