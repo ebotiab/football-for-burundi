@@ -4,20 +4,40 @@ const { useRef: useRef_KA, useState: useState_KA, useEffect: useEffect_KA } = Re
 /**
  * KidAvatar — looping 16:9 clip of a kid in Burundi kit doing kick-ups.
  *
- * Primary: transparent-background <video> (HEVC alpha for Safari,
- * VP8 alpha webm for everything else). Highest quality and smoothest
- * playback for the 95% of viewers who can play it.
+ * Chrome/Firefox/Edge: transparent-background <video> (VP8 alpha .webm).
+ * Best quality, smoothest playback.
  *
- * Fallback: animated WebP, used only when video autoplay fails — most
- * commonly iOS Low Power Mode, which blocks <video autoplay> at the OS
- * level no matter what muted/playsinline tricks you try. The fallback
- * is swapped in automatically: play() promise rejection triggers it,
- * and a watchdog timer covers browsers that silently refuse to start
- * the stream without rejecting.
+ * Safari (desktop and iOS): animated WebP from the start. WebKit on
+ * macOS 26 / iOS 26 plays HEVC-with-alpha video but stutters
+ * noticeably — alpha decode appears to fall to software compositing
+ * even with a GPU-promoted layer and no CSS filters. Animated WebP
+ * goes through the image pipeline, no per-frame alpha compositing,
+ * so it plays smoothly.
+ *
+ * The same WebP also acts as a fallback for non-Safari browsers when
+ * <video> autoplay fails outright (iOS Low Power Mode rejects play()
+ * even with muted/playsinline) — covered by play() rejection and a
+ * watchdog on the "playing" event.
  */
+
+// Detect WebKit-based browsers where HEVC-alpha playback stutters:
+// real Safari on macOS, plus every browser on iOS/iPadOS (Apple forces
+// WebKit there even for "Chrome" / "Firefox").
+function isWebKitAppleStack() {
+  if (typeof navigator === "undefined") return false;
+  const ua = navigator.userAgent;
+  const isSafariDesktop =
+    /^((?!chrome|android|crios|fxios|edgios|samsungbrowser).)*safari/i.test(ua);
+  const isIOS =
+    /iPhone|iPad|iPod/.test(ua) ||
+    // iPadOS 13+ reports itself as Mac; distinguish by touch support.
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  return isSafariDesktop || isIOS;
+}
+
 function KidAvatar({ size = 420 }) {
   const videoRef = useRef_KA(null);
-  const [fallback, setFallback] = useState_KA(false);
+  const [fallback, setFallback] = useState_KA(isWebKitAppleStack);
 
   useEffect_KA(() => {
     if (fallback) return;
