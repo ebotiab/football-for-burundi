@@ -197,16 +197,34 @@ function Hero() {
 
       <style>{`
         @media (max-width: 880px) {
-          #top { min-height: auto; padding-top: clamp(96px, 18vw, 120px); padding-bottom: 60px; }
-          #top .wrap { grid-template-columns: 1fr; gap: 24px; }
-          #top .wrap > div:last-child { min-height: 0; }
-          #top .hero-bignum { font-size: clamp(160px, 38vw, 280px); bottom: -30px; right: -30px; }
-          #top .hero-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 24px; }
-          #top .hero-scroll { display: none; }
+          /* Inline styles set on the elements need !important to be overridden. */
+          #top {
+            min-height: auto !important;
+            padding-top: clamp(96px, 18vw, 120px) !important;
+            padding-bottom: 60px !important;
+          }
+          #top .wrap {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          #top .wrap > div:last-child {
+            min-height: 0 !important;
+            justify-content: center !important;
+          }
+          #top .hero-bignum {
+            font-size: clamp(160px, 38vw, 280px) !important;
+            bottom: -30px !important;
+            right: -30px !important;
+          }
+          #top .hero-meta {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 18px 24px !important;
+          }
+          #top .hero-scroll { display: none !important; }
         }
         @media (max-width: 480px) {
-          #top .hero-bignum { display: none; }
-          #top .hero-meta { gap: 14px 18px; }
+          #top .hero-bignum { display: none !important; }
+          #top .hero-meta { gap: 14px 18px !important; }
         }
       `}</style>
     </section>

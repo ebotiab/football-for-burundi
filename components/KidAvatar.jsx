@@ -11,14 +11,26 @@ const { useRef: useRef_KA, useEffect: useEffect_KA } = React;
 function KidAvatar({ size = 420 }) {
   const ref = useRef_KA(null);
 
-  // Some browsers stall the autoplay handshake on transparent webm; nudge it.
+  // iOS/Android only allow autoplay when `muted` + `playsinline` are
+  // actually on the DOM node. React's `muted` prop doesn't always make it
+  // onto the element, so we force the attributes via the ref before play().
   useEffect_KA(() => {
     const v = ref.current;
     if (!v) return;
+    v.muted = true;
+    v.defaultMuted = true;
+    v.playsInline = true;
+    v.setAttribute("muted", "");
+    v.setAttribute("playsinline", "");
+    v.setAttribute("webkit-playsinline", "");
     const tryPlay = () => v.play().catch(() => {});
     tryPlay();
     v.addEventListener("canplay", tryPlay, { once: true });
-    return () => v.removeEventListener("canplay", tryPlay);
+    v.addEventListener("loadeddata", tryPlay, { once: true });
+    return () => {
+      v.removeEventListener("canplay", tryPlay);
+      v.removeEventListener("loadeddata", tryPlay);
+    };
   }, []);
 
   return (
