@@ -90,26 +90,28 @@ function KidAvatar({ size = 420 }) {
     aspectRatio: "16 / 9",
     display: "block",
   };
-  // drop-shadow only on the still <img> fallback. Applying CSS filters to
-  // <video> with alpha forces per-frame recomposition through the shadow,
-  // which Safari can't keep up with on transparent HEVC and falls back to
-  // software compositing → visible stutter even though decode is fine.
-  const media = {
+  // No CSS filters on the media — drop-shadow forces Safari to recomposite
+  // through the filter on every frame, which it can't keep up with on
+  // animated alpha content (both <video> HEVC and animated WebP).
+  const mediaBase = {
     width: "100%",
     height: "100%",
     objectFit: "contain",
     display: "block",
     pointerEvents: "none",
     background: "transparent",
-    // Promote to its own GPU layer so Safari doesn't recomposite the
-    // transparent video against the hero gradients + body grain overlay
-    // on every frame.
+  };
+  // GPU layer promotion only helps the <video> path: video frames are already
+  // textures, so isolating them in their own composited layer avoids
+  // re-blending the page each frame. The animated <img> is the opposite —
+  // every decoded WebP frame is a CPU bitmap that would need to be uploaded
+  // as a new GPU texture per frame. That upload pressure builds up over time
+  // in Safari and visibly degrades the loop, so the img path runs without
+  // the hint and lets the browser composite normally.
+  const videoStyle = {
+    ...mediaBase,
     transform: "translateZ(0)",
     willChange: "transform",
-  };
-  const mediaWithShadow = {
-    ...media,
-    filter: "drop-shadow(0 18px 24px rgba(0,0,0,0.55))",
   };
 
   if (fallback) {
@@ -120,7 +122,7 @@ function KidAvatar({ size = 420 }) {
           alt=""
           aria-hidden="true"
           decoding="async"
-          style={mediaWithShadow}
+          style={mediaBase}
         />
       </div>
     );
@@ -136,7 +138,7 @@ function KidAvatar({ size = 420 }) {
         playsInline
         preload="auto"
         aria-hidden="true"
-        style={media}
+        style={videoStyle}
       >
         <source src="assets/kid-loop.mov" type='video/mp4; codecs="hvc1"' />
         <source src="assets/kid-loop.webm" type="video/webm" />
