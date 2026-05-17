@@ -45,7 +45,7 @@ function Header() {
   return (
     <header style={wrap}>
       <div className="wrap" style={row}>
-        <a href="#top" style={wordmark} aria-label="NEAR YOU">
+        <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer" style={wordmark} aria-label="NEAR YOU">
           <span>NEAR&nbsp;Y</span>
           <img
             src="assets/dove-seal-transparent.png"
