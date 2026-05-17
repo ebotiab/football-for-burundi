@@ -1,7 +1,9 @@
 /* global React, TOURNAMENT */
 const { useEffect: useEffect_TB, useState: useState_TB } = React;
 
-function pad2(n) { return String(n).padStart(2, "0"); }
+function pad2(n) {
+  return String(n).padStart(2, "0");
+}
 
 function TagsBar() {
   const TARGET = new Date("2026-06-27T09:00:00+02:00").getTime();
@@ -17,16 +19,25 @@ function TagsBar() {
   const s = Math.floor((diff / 1000) % 60);
 
   return (
-    <div id="tags" style={{
-      borderTop: "1px solid var(--line)",
-      borderBottom: "1px solid var(--line)",
-      background: "var(--ny-navy-900)",
-      padding: "20px 0",
-    }}>
-      <div className="wrap" style={{
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        gap: 16, flexWrap: "wrap",
-      }}>
+    <div
+      id="tags"
+      style={{
+        borderTop: "1px solid var(--line)",
+        borderBottom: "1px solid var(--line)",
+        background: "var(--ny-navy-900)",
+        padding: "20px 0",
+      }}
+    >
+      <div
+        className="wrap"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 16,
+          flexWrap: "wrap",
+        }}
+      >
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           <span className="tag">PREMIO · CAMISETAS DE ESPAÑA</span>
           <span className="tag">SÁBADO 27.06</span>
@@ -35,18 +46,29 @@ function TagsBar() {
           <span className="tag muted">{TOURNAMENT.formato.toUpperCase()}</span>
           <span className="tag">+16</span>
         </div>
-        <div style={{
-          fontFamily: "var(--font-mono)", fontSize: 11,
-          letterSpacing: "0.22em", textTransform: "uppercase",
-          color: "var(--fg-muted)",
-          display: "flex", alignItems: "center", gap: 12,
-        }}>
+        <div
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: 11,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "var(--fg-muted)",
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+          }}
+        >
           <span style={{ color: "var(--ny-gold)" }}>Faltan</span>
-          <strong style={{
-            color: "var(--ny-bone)", fontFamily: "var(--font-display)",
-            fontWeight: 800, fontSize: "clamp(16px, 3.6vw, 20px)", letterSpacing: "0.04em",
-            whiteSpace: "nowrap",
-          }}>
+          <strong
+            style={{
+              color: "var(--ny-bone)",
+              fontFamily: "var(--font-display)",
+              fontWeight: 800,
+              fontSize: "clamp(16px, 3.6vw, 20px)",
+              letterSpacing: "0.04em",
+              whiteSpace: "nowrap",
+            }}
+          >
             {d}d : {pad2(h)}h : {pad2(m)}m : {pad2(s)}s
           </strong>
         </div>

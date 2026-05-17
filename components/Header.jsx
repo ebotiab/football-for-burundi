@@ -16,20 +16,27 @@ function Header() {
     if (open) {
       const prev = document.body.style.overflow;
       document.body.style.overflow = "hidden";
-      return () => { document.body.style.overflow = prev; };
+      return () => {
+        document.body.style.overflow = prev;
+      };
     }
   }, [open]);
 
   const wrap = {
     position: "fixed",
-    top: 0, left: 0, right: 0,
+    top: 0,
+    left: 0,
+    right: 0,
     zIndex: 50,
-    background: "linear-gradient(to bottom, rgba(11,21,37,0.92), rgba(11,21,37,0.6) 70%, transparent)",
+    background:
+      "linear-gradient(to bottom, rgba(11,21,37,0.92), rgba(11,21,37,0.6) 70%, transparent)",
     padding: "20px 0 28px",
   };
 
   const row = {
-    display: "flex", alignItems: "center", justifyContent: "space-between",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
     gap: 24,
   };
 
@@ -48,16 +55,23 @@ function Header() {
   };
 
   const nav = {
-    display: "flex", gap: 26, alignItems: "center", flexWrap: "nowrap",
-    fontFamily: "var(--font-mono)", fontSize: 11,
-    letterSpacing: "0.22em", textTransform: "uppercase",
+    display: "flex",
+    gap: 26,
+    alignItems: "center",
+    flexWrap: "nowrap",
+    fontFamily: "var(--font-mono)",
+    fontSize: 11,
+    letterSpacing: "0.22em",
+    textTransform: "uppercase",
     color: "rgba(244,239,227,0.78)",
   };
 
   const burgerBtn = {
     display: "none",
-    width: 44, height: 44,
-    alignItems: "center", justifyContent: "center",
+    width: 44,
+    height: 44,
+    alignItems: "center",
+    justifyContent: "center",
     background: "transparent",
     border: "1px solid rgba(244,239,227,0.3)",
     color: "var(--ny-bone)",
@@ -65,7 +79,9 @@ function Header() {
   };
 
   const panel = {
-    position: "fixed", inset: 0, zIndex: 60,
+    position: "fixed",
+    inset: 0,
+    zIndex: 60,
     background: "var(--ny-navy-900)",
     display: open ? "flex" : "none",
     flexDirection: "column",
@@ -75,16 +91,24 @@ function Header() {
   return (
     <header style={wrap}>
       <div className="wrap" style={row}>
-        <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer" style={wordmark} aria-label="NEAR YOU">
+        <a
+          href="https://wenearyou.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={wordmark}
+          aria-label="NEAR YOU"
+        >
           <span>NEAR&nbsp;Y</span>
           <img
             src="assets/dove-seal-transparent.png"
             alt=""
             aria-hidden="true"
             style={{
-              width: 34, height: 34,
+              width: 34,
+              height: 34,
               objectFit: "contain",
-              marginLeft: 2, marginRight: 2,
+              marginLeft: 2,
+              marginRight: 2,
               flex: "0 0 auto",
               transform: "translateY(-2px)",
             }}
@@ -94,7 +118,14 @@ function Header() {
 
         <nav style={nav} className="hdr-nav">
           {navItems.map(([label, href]) => (
-            <a key={href} href={href} className="hdr-link" style={{ whiteSpace: "nowrap" }}>{label}</a>
+            <a
+              key={href}
+              href={href}
+              className="hdr-link"
+              style={{ whiteSpace: "nowrap" }}
+            >
+              {label}
+            </a>
           ))}
         </nav>
 
@@ -112,22 +143,59 @@ function Header() {
             aria-controls="hdr-mobile-panel"
             onClick={() => setOpen(true)}
           >
-            <span aria-hidden="true" style={{
-              display: "inline-block", width: 18, height: 12, position: "relative",
-            }}>
-              <span style={{ position: "absolute", left: 0, right: 0, top: 0, height: 2, background: "currentColor" }} />
-              <span style={{ position: "absolute", left: 0, right: 0, top: 5, height: 2, background: "currentColor" }} />
-              <span style={{ position: "absolute", left: 0, right: 0, top: 10, height: 2, background: "currentColor" }} />
+            <span
+              aria-hidden="true"
+              style={{
+                display: "inline-block",
+                width: 18,
+                height: 12,
+                position: "relative",
+              }}
+            >
+              <span
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  height: 2,
+                  background: "currentColor",
+                }}
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  top: 5,
+                  height: 2,
+                  background: "currentColor",
+                }}
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  top: 10,
+                  height: 2,
+                  background: "currentColor",
+                }}
+              />
             </span>
           </button>
         </div>
       </div>
 
       <div id="hdr-mobile-panel" role="dialog" aria-modal="true" style={panel}>
-        <div style={{
-          display: "flex", justifyContent: "space-between", alignItems: "center",
-          marginBottom: 48,
-        }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 48,
+          }}
+        >
           <span style={{ ...wordmark, fontSize: 28 }}>
             <span>NEAR&nbsp;Y</span>
             <img
@@ -135,8 +203,12 @@ function Header() {
               alt=""
               aria-hidden="true"
               style={{
-                width: 30, height: 30, objectFit: "contain",
-                marginLeft: 2, marginRight: 2, flex: "0 0 auto",
+                width: 30,
+                height: 30,
+                objectFit: "contain",
+                marginLeft: 2,
+                marginRight: 2,
+                flex: "0 0 auto",
                 transform: "translateY(-2px)",
               }}
             />
@@ -147,22 +219,35 @@ function Header() {
             aria-label="Cerrar menú"
             onClick={() => setOpen(false)}
             style={{
-              width: 44, height: 44,
-              display: "inline-flex", alignItems: "center", justifyContent: "center",
+              width: 44,
+              height: 44,
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
               background: "transparent",
               border: "1px solid rgba(244,239,227,0.3)",
               color: "var(--ny-bone)",
-              fontSize: 22, lineHeight: 1,
+              fontSize: 22,
+              lineHeight: 1,
             }}
-          >×</button>
+          >
+            ×
+          </button>
         </div>
 
-        <nav style={{
-          display: "flex", flexDirection: "column", gap: 22,
-          fontFamily: "var(--font-display)", fontWeight: 800,
-          fontSize: "clamp(28px, 7vw, 40px)", letterSpacing: "0.01em",
-          textTransform: "uppercase", color: "var(--ny-bone)",
-        }}>
+        <nav
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 22,
+            fontFamily: "var(--font-display)",
+            fontWeight: 800,
+            fontSize: "clamp(28px, 7vw, 40px)",
+            letterSpacing: "0.01em",
+            textTransform: "uppercase",
+            color: "var(--ny-bone)",
+          }}
+        >
           {navItems.map(([label, href]) => (
             <a key={href} href={href} onClick={() => setOpen(false)}>
               {label}

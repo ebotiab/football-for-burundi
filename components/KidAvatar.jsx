@@ -1,5 +1,9 @@
 /* global React */
-const { useRef: useRef_KA, useState: useState_KA, useEffect: useEffect_KA } = React;
+const {
+  useRef: useRef_KA,
+  useState: useState_KA,
+  useEffect: useEffect_KA,
+} = React;
 
 /**
  * KidAvatar — looping 16:9 clip of a kid in Burundi kit doing kick-ups.
@@ -52,7 +56,7 @@ function KidAvatar({ size = 420 }) {
     if (!el || typeof IntersectionObserver === "undefined") return;
     const io = new IntersectionObserver(
       ([entry]) => setInView(entry.isIntersecting),
-      { rootMargin: "100px" }
+      { rootMargin: "100px" },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -73,7 +77,9 @@ function KidAvatar({ size = 420 }) {
     v.setAttribute("webkit-playsinline", "");
 
     let started = false;
-    const onPlaying = () => { started = true; };
+    const onPlaying = () => {
+      started = true;
+    };
     v.addEventListener("playing", onPlaying);
 
     const useFallback = () => {
