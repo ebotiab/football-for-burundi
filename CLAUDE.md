@@ -28,7 +28,7 @@ Static site rendered client-side with React 18 + Babel standalone loaded from un
 - [components/](components/) — one React component per file. Each file defines a function and assigns it to `window` (e.g. `window.Hero = Hero`). Other components reference it via a `/* global ... */` comment at the top. There are no ESM imports.
 - [landing.css](landing.css) — local styles, imports the design tokens.
 - [assets/colors_and_type.css](assets/colors_and_type.css) — NEAR YOU brand design tokens (CSS custom properties: `--ny-navy-*`, `--ny-gold`, `--ny-bone`, `--font-display`, etc.). Treat this as the source of truth for colors and type — don't hard-code hex values, use the tokens.
-- [assets/](assets/) — images, plus `kid-loop.webp` (animated WebP, transparent alpha) used by `KidAvatar`.
+- [assets/](assets/) — images, plus `kid-loop.mov` (HEVC alpha for Safari), `kid-loop.webm` (VP8 alpha for everything else), and `kid-loop.webp` (animated WebP fallback) used by `KidAvatar`.
 
 ### Adding a new component
 
@@ -53,18 +53,30 @@ Components read these values off `window.TOURNAMENT` / `TOURNAMENT` (declared as
 - Responsive overrides are done with a per-component `<style>{`...`}</style>` block at the bottom of the JSX, scoped by section id. Because the elements use inline styles, the media-query rules use `!important` to override (intentional — see `Hero.jsx` comment). Breakpoints used across the site: `1024px` (tablet — keeps 2-col grids where desktop has 3), `880px` (most sections collapse to 1 col), `720px` (form / stats fully stack), `480px` (small-phone refinements).
 - The cream section variant (`<section className="cream">`) flips the dark theme to bone background + navy text; several utilities have `section.cream` overrides.
 
-### KidAvatar clip
+### KidAvatar clip — hybrid video + WebP fallback
 
-[components/KidAvatar.jsx](components/KidAvatar.jsx) renders a transparent-background looping clip of a kid in Burundi kit as an animated WebP (`assets/kid-loop.webp`), not a `<video>`.
+[components/KidAvatar.jsx](components/KidAvatar.jsx) renders a transparent-background looping clip of a kid in Burundi kit. The component is deliberately hybrid: `<video>` for the best quality and smoothest playback when the browser allows autoplay, animated WebP as a fallback when it doesn't.
 
-The earlier `<video>` implementation was abandoned because iOS Low Power Mode blocks `<video autoplay>` at the OS level — no `muted` / `playsinline` / ref-forcing trick gets past it. Animated WebP goes through the image pipeline and loops regardless of power state. Don't "modernize" this back to `<video>`.
+Why both:
+- **iOS Low Power Mode blocks `<video autoplay>` at the OS level** — no `muted` / `playsinline` / ref-forcing trick gets past it. Animated WebP goes through the image pipeline and loops regardless of power state, so it's the only reliable option for those users.
+- **Animated WebP playback is noticeably less smooth and lower-fidelity than native video** — it's not designed for video-rate animation. So we only use it when we have to, not as the default.
 
-To regenerate the WebP (requires `brew install webp` for `img2webp`):
+How the swap happens (see `useEffect` in the component):
+1. Mount `<video>` with both HEVC and webm sources, force `muted`/`playsinline` attributes via ref.
+2. Call `play()`. If the promise rejects, set `fallback = true` → re-render as `<img src="kid-loop.webp">`.
+3. Some browsers (iOS in LPM specifically) don't reject `play()` but silently refuse to start playback. A 1.2s watchdog checks `video.paused` and triggers the fallback if so.
+
+Don't "simplify" this to just `<video>` or just `<img>` — each path covers a real device class.
+
+To regenerate the WebP fallback (requires `brew install webp` for `img2webp`):
 
 ```bash
-# Extract frames from the original alpha source, then encode.
-ffmpeg -i source.webm -vf "scale=920:-2:flags=lanczos,format=rgba" /tmp/f/frame_%04d.png
-img2webp -loop 0 -d 33 -q 90 -m 6 -mixed -o assets/kid-loop.webp /tmp/f/frame_*.png
+# IMPORTANT: pass -c:v libvpx, otherwise ffmpeg drops VP8 alpha during decode
+# and you end up with an opaque black background.
+ffmpeg -c:v libvpx -i assets/kid-loop.webm \
+  -vf "scale=920:-2:flags=lanczos,format=rgba" /tmp/f/frame_%04d.png
+img2webp -loop 0 -d 33 -q 90 -m 6 -mixed \
+  -o assets/kid-loop.webp /tmp/f/frame_*.png
 ```
 
-`920px` wide is 2× retina for the 460px max display size; quality 90 is visually lossless. Resulting file is ~5–6 MB.
+`920px` wide is 2× retina for the 460px max display size; quality 90 with alpha is ~11 MB. The fallback is only loaded when the `<video>` autoplay fails, so most visitors never pay this cost. If size becomes a concern, drop `-q` to 80 (~6 MB) — the fallback is already a degraded experience, so absolute fidelity isn't critical.
