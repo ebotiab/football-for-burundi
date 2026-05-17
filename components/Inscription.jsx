@@ -13,6 +13,18 @@ function Inscription() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!valid) return;
+
+    const lines = [
+      "Hola, quiero inscribir un equipo en el torneo NEAR YOU.",
+      "",
+      `Capitán: ${captain.trim()}`,
+      `Equipo: ${team.trim()}`,
+      `WhatsApp: ${phone.trim()}`,
+      `Tamaño: ${size}`,
+    ];
+    const url = `https://wa.me/34644893571?text=${encodeURIComponent(lines.join("\n"))}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+
     setSent(true);
   }
 

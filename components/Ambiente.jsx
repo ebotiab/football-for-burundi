@@ -42,6 +42,7 @@ function Ambiente() {
               display: "inline-block",
               transform: "rotate(-2deg) translateY(-4px)",
               padding: "2px 22px 8px",
+              marginLeft: 14,
             }}>fútbol</span>{" "}
             <br />con <span style={{ color: "var(--ny-gold)" }}>tercer tiempo</span>.
           </h2>
