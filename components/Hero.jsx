@@ -236,6 +236,7 @@ function Hero() {
         >
           {/* Soft gold ground spotlight under the avatar */}
           <div
+            className="hero-spot"
             style={{
               position: "absolute",
               bottom: "18%",
@@ -316,6 +317,7 @@ function Hero() {
             grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
             gap: 18px 24px !important;
           }
+          #top .hero-spot { bottom: 6% !important; }
           #top .hero-scroll { display: none !important; }
         }
         @media (max-width: 480px) {

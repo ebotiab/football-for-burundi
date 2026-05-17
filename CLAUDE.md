@@ -58,10 +58,12 @@ Components read these values off `window.TOURNAMENT` / `TOURNAMENT` (declared as
 [components/KidAvatar.jsx](components/KidAvatar.jsx) renders a transparent-background looping clip of a kid in Burundi kit. The component is deliberately hybrid: `<video>` for the best quality and smoothest playback when the browser allows autoplay, animated WebP as a fallback when it doesn't.
 
 Why both:
+
 - **iOS Low Power Mode blocks `<video autoplay>` at the OS level** — no `muted` / `playsinline` / ref-forcing trick gets past it. Animated WebP goes through the image pipeline and loops regardless of power state, so it's the only reliable option for those users.
 - **Animated WebP playback is noticeably less smooth and lower-fidelity than native video** — it's not designed for video-rate animation. So we only use it when we have to, not as the default.
 
 How the swap happens (see `useEffect` in the component):
+
 1. Mount `<video>` with both HEVC and webm sources, force `muted`/`playsinline` attributes via ref.
 2. Call `play()`. If the promise rejects, set `fallback = true` → re-render as `<img src="kid-loop.webp">`.
 3. Some browsers (iOS in LPM specifically) don't reject `play()` but silently refuse to start playback. A 1.2s watchdog checks `video.paused` and triggers the fallback if so.
