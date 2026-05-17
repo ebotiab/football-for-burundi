@@ -1,38 +1,17 @@
 /* global React */
-const { useRef: useRef_KA, useEffect: useEffect_KA } = React;
 
 /**
- * KidAvatar — looping 16:9 video of a kid in Burundi kit doing kick-ups.
- * Background has been removed (transparent webm) so it sits on the navy
- * hero without any matte halo. Plays muted on loop, 8s.
+ * KidAvatar — looping 16:9 clip of a kid in Burundi kit doing kick-ups.
+ * Background has been removed (transparent alpha) so it sits on the navy
+ * hero without any matte halo.
  *
- * `size` controls the width; height is derived from the 16:9 aspect.
+ * Rendered as an animated WebP rather than a <video>. WebP loops regardless
+ * of iOS Low Power Mode, which blocks autoplay on <video> elements at the
+ * OS level (no muted/playsinline trick gets past it).
+ *
+ * `size` is the maximum displayed width; container scales fluidly below that.
  */
 function KidAvatar({ size = 420 }) {
-  const ref = useRef_KA(null);
-
-  // iOS/Android only allow autoplay when `muted` + `playsinline` are
-  // actually on the DOM node. React's `muted` prop doesn't always make it
-  // onto the element, so we force the attributes via the ref before play().
-  useEffect_KA(() => {
-    const v = ref.current;
-    if (!v) return;
-    v.muted = true;
-    v.defaultMuted = true;
-    v.playsInline = true;
-    v.setAttribute("muted", "");
-    v.setAttribute("playsinline", "");
-    v.setAttribute("webkit-playsinline", "");
-    const tryPlay = () => v.play().catch(() => {});
-    tryPlay();
-    v.addEventListener("canplay", tryPlay, { once: true });
-    v.addEventListener("loadeddata", tryPlay, { once: true });
-    return () => {
-      v.removeEventListener("canplay", tryPlay);
-      v.removeEventListener("loadeddata", tryPlay);
-    };
-  }, []);
-
   return (
     <div
       style={{
@@ -44,14 +23,11 @@ function KidAvatar({ size = 420 }) {
         filter: "drop-shadow(0 18px 24px rgba(0,0,0,0.55))",
       }}
     >
-      <video
-        ref={ref}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
+      <img
+        src="assets/kid-loop.webp"
+        alt=""
         aria-hidden="true"
+        decoding="async"
         style={{
           width: "100%",
           height: "100%",
@@ -60,10 +36,7 @@ function KidAvatar({ size = 420 }) {
           pointerEvents: "none",
           background: "transparent",
         }}
-      >
-        <source src="assets/kid-loop.mov" type='video/mp4; codecs="hvc1"' />
-        <source src="assets/kid-loop.webm" type="video/webm" />
-      </video>
+      />
     </div>
   );
 }
