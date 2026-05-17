@@ -33,7 +33,13 @@ function KidAvatar({ size = 420 }) {
     v.setAttribute("playsinline", "");
     v.setAttribute("webkit-playsinline", "");
 
-    const useFallback = () => setFallback(true);
+    let started = false;
+    const onPlaying = () => { started = true; };
+    v.addEventListener("playing", onPlaying);
+
+    const useFallback = () => {
+      if (!started) setFallback(true);
+    };
     const tryPlay = () => {
       const p = v.play();
       if (p && typeof p.catch === "function") p.catch(useFallback);
@@ -43,14 +49,15 @@ function KidAvatar({ size = 420 }) {
     v.addEventListener("loadeddata", tryPlay, { once: true });
 
     // Some browsers (notably iOS in Low Power Mode) don't reject play()
-    // but silently refuse to start playback. If we're still paused after
-    // a generous window, swap to the WebP fallback.
-    const watchdog = setTimeout(() => {
-      if (v.paused) useFallback();
-    }, 1200);
+    // but silently refuse to start playback. If the "playing" event never
+    // fires within a generous window, swap to the WebP fallback. Safari
+    // can take a moment to actually start an HEVC stream, so the window
+    // has to be long enough that a normal startup never trips it.
+    const watchdog = setTimeout(useFallback, 4000);
 
     return () => {
       clearTimeout(watchdog);
+      v.removeEventListener("playing", onPlaying);
       v.removeEventListener("canplay", tryPlay);
       v.removeEventListener("loadeddata", tryPlay);
     };
