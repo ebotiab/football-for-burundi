@@ -36,7 +36,6 @@ function KidAvatar({ size = 420 }) {
     >
       <video
         ref={ref}
-        src="assets/kid-loop.webm"
         autoPlay
         muted
         loop
@@ -51,7 +50,10 @@ function KidAvatar({ size = 420 }) {
           pointerEvents: "none",
           background: "transparent",
         }}
-      />
+      >
+        <source src="assets/kid-loop.mov" type='video/mp4; codecs="hvc1"' />
+        <source src="assets/kid-loop.webm" type="video/webm" />
+      </video>
     </div>
   );
 }
