@@ -17,10 +17,10 @@ function Premio() {
       <div className="wrap" style={{ position: "relative" }}>
         <div className="sec-header">
           <div className="eyebrow">04 · El premio</div>
-          <h2>
+          <h2 className="premio-h2">
             Levanta la copa.<br />
-            Y vete con la <span className="brush" style={{
-              fontSize: "clamp(40px, 5.6vw, 84px)",
+            Y vete con la <span className="brush premio-h2-brush" style={{
+              fontSize: "clamp(28px, 5.6vw, 84px)",
               display: "inline-block",
               transform: "rotate(-2deg) translateY(-4px)",
               padding: "2px 22px 8px",
@@ -305,6 +305,7 @@ function Premio() {
       </div>
 
       <style>{`
+        #premio .premio-h2 { overflow-wrap: break-word; }
         @media (max-width: 1024px) {
           #premio .premio-card { min-height: 0 !important; }
           #premio .premio-jerseys,
@@ -321,6 +322,9 @@ function Premio() {
         @media (max-width: 480px) {
           #premio .premio-jersey-main { width: min(64%, 200px) !important; }
           #premio .premio-jersey-alt { width: min(40%, 130px) !important; right: 4% !important; }
+          #premio .premio-h2-brush { padding: 2px 14px 6px !important; }
+          #premio .premio-h2-brush::before { width: 12px !important; left: -8px !important; }
+          #premio .premio-h2-brush::after { width: 12px !important; right: -8px !important; }
         }
       `}</style>
     </section>

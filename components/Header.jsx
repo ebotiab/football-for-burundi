@@ -195,11 +195,11 @@ function Header() {
           transition: right var(--t-fast) var(--ease-out);
         }
         .hdr-link:hover::after { right: 0; }
-        @media (max-width: 820px) {
+        @media (max-width: 960px) {
           .hdr-nav { display: none; }
           .hdr-burger { display: inline-flex !important; }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
           .hdr-cta { display: none; }
         }
       `}</style>
