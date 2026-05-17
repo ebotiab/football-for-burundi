@@ -37,7 +37,26 @@ function isWebKitAppleStack() {
 
 function KidAvatar({ size = 420 }) {
   const videoRef = useRef_KA(null);
+  const wrapRef = useRef_KA(null);
   const [fallback, setFallback] = useState_KA(isWebKitAppleStack);
+  // Pause the animated WebP when scrolled off-screen. Safari's animated-image
+  // pipeline uploads every decoded frame to the GPU as a new texture, and that
+  // pressure accumulates the longer the loop runs. Unmounting the <img> when
+  // the avatar leaves the viewport releases the decoder and lets the loop come
+  // back fresh when the user scrolls back to the hero.
+  const [inView, setInView] = useState_KA(true);
+
+  useEffect_KA(() => {
+    if (!fallback) return;
+    const el = wrapRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { rootMargin: "100px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [fallback]);
 
   useEffect_KA(() => {
     if (fallback) return;
@@ -116,14 +135,16 @@ function KidAvatar({ size = 420 }) {
 
   if (fallback) {
     return (
-      <div style={wrap}>
-        <img
-          src="assets/kid-loop.webp"
-          alt=""
-          aria-hidden="true"
-          decoding="async"
-          style={mediaBase}
-        />
+      <div ref={wrapRef} style={wrap}>
+        {inView && (
+          <img
+            src="assets/kid-loop.webp"
+            alt=""
+            aria-hidden="true"
+            decoding="async"
+            style={mediaBase}
+          />
+        )}
       </div>
     );
   }

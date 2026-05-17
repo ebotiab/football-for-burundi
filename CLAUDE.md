@@ -74,9 +74,9 @@ To regenerate the WebP fallback (requires `brew install webp` for `img2webp`):
 # IMPORTANT: pass -c:v libvpx, otherwise ffmpeg drops VP8 alpha during decode
 # and you end up with an opaque black background.
 ffmpeg -c:v libvpx -i assets/kid-loop.webm \
-  -vf "scale=920:-2:flags=lanczos,format=rgba" /tmp/f/frame_%04d.png
-img2webp -loop 0 -d 33 -q 90 -m 6 -mixed \
+  -vf "fps=15,scale=540:-2:flags=lanczos,format=rgba" /tmp/f/frame_%04d.png
+img2webp -loop 0 -d 67 -q 75 -m 6 -mixed \
   -o assets/kid-loop.webp /tmp/f/frame_*.png
 ```
 
-`920px` wide is 2× retina for the 460px max display size; quality 90 with alpha is ~11 MB. The fallback is only loaded when the `<video>` autoplay fails, so most visitors never pay this cost. If size becomes a concern, drop `-q` to 80 (~6 MB) — the fallback is already a degraded experience, so absolute fidelity isn't critical.
+Current output: 540×304, 15 fps (67 ms/frame), quality 75, ~2.1 MB. The dimensions and frame rate are tuned for **Safari/iOS playback smoothness, not download size**: every animated WebP frame is a CPU bitmap that Safari uploads to the GPU as a new texture, and that upload pressure accumulates over time and visibly degrades the loop after a few seconds. Smaller textures (540 wide ≈ 1.17× the 460 px display max) and fewer uploads/second (15 fps instead of 24–30) are what keep the loop fluid indefinitely. Don't crank these back up unless you've verified Safari can sustain the new settings for 60+ seconds. The fallback is also paused by an `IntersectionObserver` in `KidAvatar.jsx` when scrolled off-screen, so the decoder gets a fresh start each time the user returns to the hero.
