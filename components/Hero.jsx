@@ -238,7 +238,7 @@ function Hero() {
           <div
             style={{
               position: "absolute",
-              bottom: "22%",
+              bottom: "18%",
               left: "50%",
               transform: "translateX(-50%)",
               width: "min(60%, 220px)",
