@@ -42,8 +42,9 @@ function Premio() {
           <p className="lead">
             El equipo campeón se lleva camisetas oficiales de Adidas con las que
             España juega el Mundial 2026 y una caja de vinos para el vestuario.
-            Y dos premios sorpresa para los que marcan la diferencia
-            individualmente.
+            Y dos premios sorpresa para los que{" "}
+            <span style={{ color: "var(--ny-gold)" }}>marcan</span> la
+            diferencia individualmente.
           </p>
         </div>
 
@@ -427,7 +428,10 @@ function Premio() {
         @media (max-width: 480px) {
           #premio .premio-jersey-main { width: min(64%, 200px) !important; }
           #premio .premio-jersey-alt { width: min(40%, 130px) !important; right: 4% !important; }
-          #premio .premio-h2-brush { padding: 2px 14px 6px !important; }
+          #premio .premio-h2-brush {
+            padding: 2px 14px 6px !important;
+            margin: 0 10px !important;
+          }
           #premio .premio-h2-brush::before { width: 12px !important; left: -8px !important; }
           #premio .premio-h2-brush::after { width: 12px !important; right: -8px !important; }
         }

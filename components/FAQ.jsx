@@ -56,7 +56,7 @@ function FAQ() {
     <section id="faq">
       <div className="wrap">
         <div className="sec-header">
-          <div className="eyebrow">06 · Dudas sin fricción</div>
+          <div className="eyebrow">06 · Aclaramos tus dudas</div>
           <h2>
             Lo que la gente
             <br />
