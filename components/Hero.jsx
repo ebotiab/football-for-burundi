@@ -125,9 +125,9 @@ function Hero() {
           </div>
 
           <p style={leadStyle}>
-            Una mañana de sábado. Un campo en Madrid. Y al otro lado del
-            balón, Burundi: material sanitario y clínicas rurales que
-            vuelven a abrir sus puertas.
+            De la mano de NEAR YOU, fútbol 7v7 en Madrid para mandar
+            material sanitario y reabrir clínicas rurales en Burundi.
+            Apúntate ese finde porque… se vienen cositas.
           </p>
 
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
