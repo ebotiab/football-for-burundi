@@ -81,6 +81,11 @@ function KidAvatar({ size = 420 }) {
     display: "block",
     pointerEvents: "none",
     background: "transparent",
+    // Promote to its own GPU layer so Safari doesn't recomposite the
+    // transparent video against the hero gradients + body grain overlay
+    // on every frame.
+    transform: "translateZ(0)",
+    willChange: "transform",
   };
   const mediaWithShadow = {
     ...media,
