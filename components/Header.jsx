@@ -196,7 +196,7 @@ function Header() {
         }
         .hdr-link:hover::after { right: 0; }
         @media (max-width: 960px) {
-          .hdr-nav { display: none; }
+          .hdr-nav { display: none !important; }
           .hdr-burger { display: inline-flex !important; }
         }
         @media (max-width: 600px) {
