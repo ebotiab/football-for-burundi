@@ -1,9 +1,28 @@
 /* global React */
 function Causa() {
   const pillars = [
-    ["Directo", "Sin intermediarios. El dinero va de tu equipo a Burundi en cuestión de días, no años."],
-    ["Tangible", "Una obra concreta sobre el terreno, no campañas abstractas. Ves dónde va tu inscripción."],
-    ["Solidaridad sin fronteras", <>Es el lema de <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer">NEAR YOU</a>. No es un eslogan: es el método.</>],
+    [
+      "Directo",
+      "Sin intermediarios. El dinero va de tu equipo a Burundi en cuestión de días, no años.",
+    ],
+    [
+      "Tangible",
+      "Una obra concreta sobre el terreno, no campañas abstractas. Ves dónde va tu inscripción.",
+    ],
+    [
+      "Solidaridad sin fronteras",
+      <>
+        Es el lema de{" "}
+        <a
+          href="https://wenearyou.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          NEAR YOU
+        </a>
+        . No es un eslogan: es el método.
+      </>,
+    ],
   ];
 
   const slogan = {
@@ -18,7 +37,10 @@ function Causa() {
 
   return (
     <section id="causa">
-      <div className="bignum" style={{ top: -10, left: -30, fontSize: "clamp(180px, 22vw, 360px)" }}>
+      <div
+        className="bignum"
+        style={{ top: -10, left: -30, fontSize: "clamp(180px, 22vw, 360px)" }}
+      >
         01
       </div>
 
@@ -27,20 +49,33 @@ function Causa() {
           <div>
             <div className="eyebrow">01 · La causa</div>
             <h2>
-              No es un torneo.<br />
-              Es un proyecto en Burundi<br />
-              disfrazado de <span style={{ color: "var(--ny-gold)" }}>fútbol.</span>
+              No es un torneo.
+              <br />
+              Es solidaridad
+              <br />
+              disfrazada de{" "}
+              <span style={{ color: "var(--ny-gold)" }}>fútbol.</span>
             </h2>
             <p className="lead">
-              <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer">NEAR YOU</a> es una fundación sin ánimo de lucro (Reg. Fundaciones nº 3043)
-              que actúa donde más se necesita: Ucrania, Burundi, Venezuela, Colombia.
-              Lo recaudado este año se destina íntegramente a Burundi:
-              adquisición de material sanitario y reconstrucción de clínicas
-              en zonas rurales.
+              <a
+                href="https://wenearyou.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                NEAR YOU
+              </a>{" "}
+              es una fundación sin ánimo de lucro (Reg. Fundaciones nº 3043) que
+              actúa donde más se necesita: Ucrania, Burundi, Venezuela,
+              Colombia. Lo recaudado este año se destina íntegramente a Burundi:
+              adquisición de material sanitario y reconstrucción de clínicas en
+              zonas rurales.
             </p>
           </div>
 
-          <aside className="destino-card" aria-label="Destino del proyecto: Burundi">
+          <aside
+            className="destino-card"
+            aria-label="Destino del proyecto: Burundi"
+          >
             <div className="destino-eyebrow">Destino</div>
             <div className="destino-flag">
               <img
@@ -58,45 +93,68 @@ function Causa() {
           </aside>
         </div>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1.1fr 1fr",
-          gap: 72,
-          alignItems: "start",
-        }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1.1fr 1fr",
+            gap: 72,
+            alignItems: "start",
+          }}
+        >
           <div style={slogan}>
             Cada equipo inscrito{" "}
-            <span style={{ color: "var(--ny-gold)" }}>suma</span>{" "}
-            en Burundi.<br />
-            Cada gol marcado{" "}
-            <span style={{ color: "var(--ny-gold)" }}>se celebra</span>{" "}
-            a 6.000 km.<br />
-            <span style={{
-              textDecoration: "line-through",
-              textDecorationColor: "var(--ny-gold)",
-              textDecorationThickness: "5px",
-              opacity: 0.5,
-            }}>
+            <span style={{ color: "var(--ny-gold)" }}>suma</span> en Burundi.
+            <br />
+            Cada gol <span style={{ color: "var(--ny-gold)" }}>
+              se celebra
+            </span>{" "}
+            a 6.000 km.
+            <br />
+            <span
+              style={{
+                textDecoration: "line-through",
+                textDecorationColor: "var(--ny-gold)",
+                textDecorationThickness: "5px",
+                opacity: 0.5,
+              }}
+            >
               Cada partido es solo un partido.
             </span>{" "}
             <br />
-            <span style={{ color: "var(--ny-gold)" }}>Cada partido importa.</span>
+            <span style={{ color: "var(--ny-gold)" }}>
+              Cada partido importa.
+            </span>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             {pillars.map(([title, body]) => (
-              <div key={title} style={{
-                borderLeft: "3px solid var(--ny-gold)",
-                padding: "6px 0 6px 22px",
-              }}>
-                <h4 style={{
-                  color: "var(--ny-bone)", marginBottom: 8,
-                  fontSize: 17, letterSpacing: "0.06em",
-                }}>{title}</h4>
-                <p style={{
-                  fontSize: 15, lineHeight: 1.55,
-                  color: "var(--ny-bone)", opacity: 0.78,
-                }}>{body}</p>
+              <div
+                key={title}
+                style={{
+                  borderLeft: "3px solid var(--ny-gold)",
+                  padding: "6px 0 6px 22px",
+                }}
+              >
+                <h4
+                  style={{
+                    color: "var(--ny-bone)",
+                    marginBottom: 8,
+                    fontSize: 17,
+                    letterSpacing: "0.06em",
+                  }}
+                >
+                  {title}
+                </h4>
+                <p
+                  style={{
+                    fontSize: 15,
+                    lineHeight: 1.55,
+                    color: "var(--ny-bone)",
+                    opacity: 0.78,
+                  }}
+                >
+                  {body}
+                </p>
               </div>
             ))}
           </div>

@@ -95,10 +95,16 @@ function Hero() {
   return (
     <section id="top" style={wrap}>
       {/* Decorative giant N·Y in the corner */}
-      <div className="bignum hero-bignum" style={{
-        bottom: -40, right: -50,
-        fontSize: "clamp(220px, 28vw, 460px)",
-      }}>N·Y</div>
+      <div
+        className="bignum hero-bignum"
+        style={{
+          bottom: -40,
+          right: -50,
+          fontSize: "clamp(220px, 28vw, 460px)",
+        }}
+      >
+        N·Y
+      </div>
 
       <div className="wrap" style={grid}>
         {/* LEFT — copy */}
@@ -108,48 +114,76 @@ function Hero() {
           </div>
 
           <h1 style={titleStyle}>
-            FÚTBOL QUE<br />
+            FÚTBOL QUE
+            <br />
             CAMBIA <span style={{ color: "var(--ny-gold)" }}>VIDAS.</span>
           </h1>
 
           <div style={subtitleWrap}>
-            <a href="#inscripcion" className="brush" style={{ fontSize: "clamp(34px, 4.4vw, 56px)" }}>
+            <a
+              href="#inscripcion"
+              className="brush"
+              style={{ fontSize: "clamp(34px, 4.4vw, 56px)" }}
+            >
               apúntate
             </a>
-            <span style={{
-              ...subSmall,
-              fontSize: "clamp(14px, 1.4vw, 18px)",
-              letterSpacing: "0.18em",
-              color: "rgba(244,239,227,0.85)",
-            }}>y <span style={{ color: "var(--ny-gold)" }}>marca</span> la diferencia</span>
+            <span
+              style={{
+                ...subSmall,
+                fontSize: "clamp(14px, 1.4vw, 18px)",
+                letterSpacing: "0.18em",
+                color: "rgba(244,239,227,0.85)",
+              }}
+            >
+              y <span style={{ color: "var(--ny-gold)" }}>marca</span> la
+              diferencia
+            </span>
           </div>
 
           <p style={leadStyle}>
-            De la mano de <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer">NEAR YOU</a>, fútbol 7v7 en Madrid para mandar
-            material sanitario y reabrir clínicas rurales en Burundi.
-            Apúntate ese finde porque… se vienen cositas.
+            De la mano de{" "}
+            <a
+              href="https://wenearyou.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <strong>NEAR YOU</strong>
+            </a>
+            , fútbol 7v7 en Madrid para mandar material sanitario y reabrir
+            clínicas rurales en Burundi. Apúntate ese sábado en el calendario
+            porque… se vienen cositas.
           </p>
 
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-            <a href="#inscripcion" className="btn-primary" style={{ fontSize: 18, padding: "20px 36px" }}>
+            <a
+              href="#inscripcion"
+              className="btn-primary"
+              style={{ fontSize: 18, padding: "20px 36px" }}
+            >
               Inscribe tu equipo
               <span aria-hidden="true">→</span>
             </a>
-            <a href="#causa" className="btn-secondary">Saber más</a>
+            <a href="#causa" className="btn-secondary">
+              Saber más
+            </a>
           </div>
 
-          <a href="#premio" className="hero-prize" style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            marginTop: 18,
-            fontFamily: "var(--font-mono)",
-            fontSize: 11,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: "rgba(244,239,227,0.6)",
-            transition: "color var(--t-fast) var(--ease-out)",
-          }}>
+          <a
+            href="#premio"
+            className="hero-prize"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              marginTop: 18,
+              fontFamily: "var(--font-mono)",
+              fontSize: 11,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "rgba(244,239,227,0.6)",
+              transition: "color var(--t-fast) var(--ease-out)",
+            }}
+          >
             <span style={{ color: "var(--ny-gold)" }}>+ Premio</span>
             <span style={{ opacity: 0.5 }}>·</span>
             <span>Equipación de España + caja de vinos para el campeón</span>
@@ -159,14 +193,18 @@ function Hero() {
             <div style={metaCell}>
               Cuándo
               <strong style={metaStrong}>27.06.26</strong>
-              <span style={{
-                display: "block",
-                marginTop: 4,
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                letterSpacing: "0.22em",
-                color: "rgba(244,239,227,0.6)",
-              }}>10:00 H</span>
+              <span
+                style={{
+                  display: "block",
+                  marginTop: 4,
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  letterSpacing: "0.22em",
+                  color: "rgba(244,239,227,0.6)",
+                }}
+              >
+                10:00 H
+              </span>
             </div>
             <div style={metaCell}>
               Dónde
@@ -179,49 +217,78 @@ function Hero() {
             <div style={metaCell}>
               Inscripción
               <strong style={metaStrong}>
-                {precio ? `${precio}€` : "—"} <span style={{ opacity: 0.55, fontSize: 11 }}>/EQUIPO</span>
+                {precio ? `${precio}€` : "—"}{" "}
+                <span style={{ opacity: 0.55, fontSize: 11 }}>/EQUIPO</span>
               </strong>
             </div>
           </div>
         </div>
 
         {/* RIGHT — small kid avatar, transparent bg */}
-        <div style={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: 360,
-        }}>
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: 360,
+          }}
+        >
           {/* Soft gold ground spotlight under the avatar */}
-          <div style={{
-            position: "absolute",
-            bottom: "14%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "min(60%, 220px)", height: 28,
-            background: "radial-gradient(ellipse at center, rgba(245,197,24,0.32), transparent 70%)",
-            filter: "blur(2px)",
-            pointerEvents: "none",
-            zIndex: 0,
-          }} />
+          <div
+            style={{
+              position: "absolute",
+              bottom: "22%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "min(60%, 220px)",
+              height: 28,
+              background:
+                "radial-gradient(ellipse at center, rgba(245,197,24,0.32), transparent 70%)",
+              filter: "blur(2px)",
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          />
           <div style={{ width: "100%", maxWidth: "min(72vw, 460px)" }}>
-            <KidAvatar size={(window.TOURNAMENT && window.TOURNAMENT.avatarSize) || 460} />
+            <KidAvatar
+              size={(window.TOURNAMENT && window.TOURNAMENT.avatarSize) || 460}
+            />
           </div>
         </div>
       </div>
 
       {/* Scroll affordance */}
-      <a href="#tags" aria-label="Bajar" className="hero-scroll" style={{
-        position: "absolute", bottom: 20, left: "50%",
-        transform: "translateX(-50%)",
-        fontFamily: "var(--font-mono)", fontSize: 10,
-        letterSpacing: "0.32em", textTransform: "uppercase",
-        color: "var(--ny-gold)", zIndex: 3,
-        display: "flex", flexDirection: "column", alignItems: "center", gap: 6,
-      }}>
+      <a
+        href="#tags"
+        aria-label="Bajar"
+        className="hero-scroll"
+        style={{
+          position: "absolute",
+          bottom: 20,
+          left: "50%",
+          transform: "translateX(-50%)",
+          fontFamily: "var(--font-mono)",
+          fontSize: 10,
+          letterSpacing: "0.32em",
+          textTransform: "uppercase",
+          color: "var(--ny-gold)",
+          zIndex: 3,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 6,
+        }}
+      >
         <span>Scroll</span>
-        <span style={{ width: 1, height: 32, background: "var(--ny-gold)", opacity: 0.6 }} />
+        <span
+          style={{
+            width: 1,
+            height: 32,
+            background: "var(--ny-gold)",
+            opacity: 0.6,
+          }}
+        />
       </a>
 
       <style>{`

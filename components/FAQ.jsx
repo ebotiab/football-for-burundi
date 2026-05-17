@@ -23,7 +23,7 @@ function FAQ() {
     ],
     [
       "¿Qué incluye la inscripción?",
-      "Partidos arbitrados, camiseta del torneo, agua y un café de bienvenida. Música, comida y bebida en barra se pagan aparte, en el propio sitio.",
+      "Partidos arbitrados, petos, agua y algo de picar de bienvenida. Música, comida y bebida en barra se pagan aparte, en el propio sitio.",
     ],
     [
       "¿Hay premios?",
@@ -35,7 +35,18 @@ function FAQ() {
     ],
     [
       "¿Quién organiza?",
-      <>Fundación <a href="https://wenearyou.org/" target="_blank" rel="noopener noreferrer">NEAR YOU</a>. CIF G21897772. Reg. Fundaciones nº 3043. Auditada anualmente. wenearyou.org.</>,
+      <>
+        Fundación{" "}
+        <a
+          href="https://wenearyou.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          NEAR YOU
+        </a>
+        . CIF G21897772. Reg. Fundaciones nº 3043. Auditada anualmente.
+        wenearyou.org.
+      </>,
     ],
   ];
 
@@ -47,7 +58,8 @@ function FAQ() {
         <div className="sec-header">
           <div className="eyebrow">06 · Dudas sin fricción</div>
           <h2>
-            Lo que la gente<br />
+            Lo que la gente
+            <br />
             pregunta siempre.
           </h2>
         </div>
@@ -60,35 +72,53 @@ function FAQ() {
                 <button
                   onClick={() => setOpen(isOpen ? -1 : i)}
                   style={{
-                    width: "100%", textAlign: "left",
+                    width: "100%",
+                    textAlign: "left",
                     padding: "clamp(18px, 3vw, 26px) 0",
-                    display: "flex", alignItems: "baseline", gap: 16,
-                    fontFamily: "var(--font-display)", fontWeight: 800,
-                    fontSize: "clamp(18px, 2vw, 24px)", letterSpacing: "0.01em",
-                    textTransform: "uppercase", lineHeight: 1.1,
+                    display: "flex",
+                    alignItems: "baseline",
+                    gap: 16,
+                    fontFamily: "var(--font-display)",
+                    fontWeight: 800,
+                    fontSize: "clamp(18px, 2vw, 24px)",
+                    letterSpacing: "0.01em",
+                    textTransform: "uppercase",
+                    lineHeight: 1.1,
                     color: isOpen ? "var(--ny-gold)" : "var(--ny-bone)",
                     transition: "color 0.2s ease",
                   }}
                   aria-expanded={isOpen}
                 >
                   <span style={{ flex: 1, textWrap: "balance" }}>{q}</span>
-                  <span style={{
-                    fontFamily: "var(--font-mono)", fontSize: 22,
-                    color: "var(--ny-gold)",
-                    transform: isOpen ? "rotate(45deg)" : "rotate(0)",
-                    transition: "transform 0.2s ease",
-                    flex: "0 0 28px", textAlign: "right",
-                    lineHeight: 1,
-                  }}>+</span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 22,
+                      color: "var(--ny-gold)",
+                      transform: isOpen ? "rotate(45deg)" : "rotate(0)",
+                      transition: "transform 0.2s ease",
+                      flex: "0 0 28px",
+                      textAlign: "right",
+                      lineHeight: 1,
+                    }}
+                  >
+                    +
+                  </span>
                 </button>
                 {isOpen && (
-                  <div style={{
-                    paddingBottom: 28,
-                    fontFamily: "var(--font-body)",
-                    fontSize: 16, lineHeight: 1.6,
-                    color: "var(--ny-bone)", opacity: 0.82,
-                    maxWidth: 760,
-                  }}>{a}</div>
+                  <div
+                    style={{
+                      paddingBottom: 28,
+                      fontFamily: "var(--font-body)",
+                      fontSize: 16,
+                      lineHeight: 1.6,
+                      color: "var(--ny-bone)",
+                      opacity: 0.82,
+                      maxWidth: 760,
+                    }}
+                  >
+                    {a}
+                  </div>
                 )}
               </div>
             );

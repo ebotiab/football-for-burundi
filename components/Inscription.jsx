@@ -37,7 +37,7 @@ function Inscription() {
         <div className="sec-header">
           <div className="eyebrow">05 · Inscríbete</div>
           <h2>
-            Dos minutos.<br />
+            Solo cuatro campos.<br />
             <span style={{ color: "var(--ny-gold)" }}>Y al campo.</span>
           </h2>
           <p className="lead">
@@ -69,7 +69,7 @@ function Inscription() {
             <div className="field">
               <label>Nombre del equipo</label>
               <input
-                placeholder="ej. Los halcones del Retiro"
+                placeholder="ej. Los Jacobos de Villaverde"
                 value={team}
                 onChange={(e) => setTeam(e.target.value)}
                 required
