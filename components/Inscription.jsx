@@ -42,8 +42,8 @@ function Inscription() {
             <span style={{ color: "var(--ny-gold)" }}>Y al campo.</span>
           </h2>
           <p className="lead">
-            Te respondemos por WhatsApp en menos de 24h con punto de encuentro y
-            horario de tu primer partido.
+            Te respondemos por WhatsApp en menos de 24h confirmando tu
+            inscripción.
           </p>
         </div>
 

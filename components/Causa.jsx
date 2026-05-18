@@ -88,7 +88,7 @@ function Causa() {
             <div className="destino-meta">
               <strong>Burundi</strong>
               <span>3°23′S · 29°55′E</span>
-              <span>6.000 km de Madrid</span>
+              <span>5.912 km de Madrid</span>
             </div>
           </aside>
         </div>

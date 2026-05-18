@@ -60,7 +60,7 @@ function Ambiente() {
             con <span style={{ color: "var(--ny-gold)" }}>tercer tiempo</span>.
           </h2>
           <p className="lead">
-            Llegas a las nueve, juegas tu partido y te quedas. Música, comida y
+            Llegas a las 10:00am, juegas tu partido y te quedas. Música, comida y
             bebida en la propia sede — sin tener que moverte. Una mañana que
             termina en cervecita y bailoteo.
           </p>
