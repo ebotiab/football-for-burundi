@@ -1,4 +1,4 @@
-/* global React, Header, Hero, TagsBar, Causa, StatsBar, HowItWorks, Ambiente, Premio, Inscription, FAQ, Footer */
+/* global React, Header, Hero, TagsBar, Causa, StatsBar, HowItWorks, Ambiente, Premio, Inscription, FilaCero, FAQ, Footer */
 
 const TOURNAMENT_DEFAULTS = {
   formato: "Fútbol 7",
@@ -22,6 +22,7 @@ function App() {
       <Ambiente />
       <Premio />
       <Inscription />
+      <FilaCero />
       <FAQ />
       <Footer />
     </>

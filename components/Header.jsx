@@ -7,6 +7,7 @@ function Header() {
     ["Cómo va", "#como"],
     ["Ambiente", "#ambiente"],
     ["Premios", "#premio"],
+    ["Fila Cero", "#fila-cero"],
     ["FAQ", "#faq"],
   ];
 
